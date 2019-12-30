@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VkBot.Core.Messages;
+using VkBot.Core.Structures;
 using VkBot.DB;
 using VkNet.Abstractions;
+using VkNet.Enums.SafetyEnums;
+using VkNet.Model.Keyboard;
+using VkNet.Model.RequestParams;
 
 namespace VkBot.Core.Commands
 {
@@ -33,12 +37,10 @@ namespace VkBot.Core.Commands
                         {
                             con.History.Add(newMessage);
                             con.SaveChanges();
-                            response.ResponseText = "запомнил";
                         }
                         else
                         {
                             con.Update(newMessage);
-                            response.ResponseText = "обновил";
                         }
 
                     }
@@ -48,6 +50,21 @@ namespace VkBot.Core.Commands
                     }
                     
                     transaction.Commit();
+
+                    //inline keyboard
+                    
+
+                    request.vkApi.Messages.Send(new MessagesSendParams
+                {
+                    RandomId = new DateTime().Millisecond,
+                    PeerId = request.UserID,
+                    Message = "Важно?",
+                    ForwardMessages = response?.ForwardedMessages,
+                    UserId = response?.UserId ?? 0,
+                    Keyboard = GetInlineVoteKeyboard(),
+                });
+
+
                 }
                 else
                 {
@@ -55,6 +72,41 @@ namespace VkBot.Core.Commands
                 }
             }
         }
+
+        public MessageKeyboard GetInlineVoteKeyboard()
+        {
+            var keyboardButtons = new List<List<MessageKeyboardButton>>();
+            var buttons = new List<MessageKeyboardButton>();
+            buttons.Add(new MessageKeyboardButton()
+            {
+                Action = new MessageKeyboardButtonAction()
+                {
+                    Label = "Важно",
+                    Type = KeyboardButtonActionType.Text,
+                },
+                Color = KeyboardButtonColor.Positive
+            });
+            keyboardButtons.Add(buttons);
+
+            buttons = new List<MessageKeyboardButton>();
+            buttons.Add(new MessageKeyboardButton()
+            {
+                Action = new MessageKeyboardButtonAction()
+                {
+                    Label = "Не очень",
+                    Type = KeyboardButtonActionType.Text,
+                },
+                Color = KeyboardButtonColor.Negative
+            });
+            keyboardButtons.Add(buttons);
+
+            return new MessageKeyboard() {
+                Inline = true,
+                Buttons = keyboardButtons,
+            };
+
+        }
+
     }
 }
 
