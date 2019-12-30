@@ -51,9 +51,6 @@ namespace VkBot.Core.Commands
                 var backButton = new List<MessageKeyboardButton>();
                 var newKeyBoard = new GetKeyboard();
 
-                var PayloadValues = new List<string>();
-                PayloadValues.Add(newKeyBoard.KeyWord);
-
                 backButton.Add(new MessageKeyboardButton()
                 {
                     Action = new MessageKeyboardButtonAction()
@@ -62,8 +59,7 @@ namespace VkBot.Core.Commands
                         Type = KeyboardButtonActionType.Text,
                         Payload = new Payload() 
                         {
-                            Param = "KeyWord",
-                            Values = PayloadValues
+                            Command = newKeyBoard.KeyWord
                         }.Serialize(),
                     },
                     Color = KeyboardButtonColor.Default

@@ -19,3 +19,6 @@ Release/
 .vs/VkBot/v15/Server/sqlite3/storage.ide-shm
 .vs/VkBot/DesignTimeBuild/.dtbcache
 .vs/VkBot/DesignTimeBuild/.dtbcache
+.vs/VkBot/v16/Server/sqlite3/*
+*storage.ide
+*storage.ide-wal

@@ -13,6 +13,12 @@ namespace VkBot.Core.Structures
     public class Payload
     {
         /// <summary>
+        /// Ссылка на команду
+        /// </summary>
+        [JsonProperty("Command")]
+        public string Command { get; set; }
+
+        /// <summary>
         /// Параметр
         /// </summary>
         [JsonProperty("Param")]

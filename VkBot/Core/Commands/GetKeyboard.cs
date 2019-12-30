@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using VkBot.Core.Messages;
+using VkBot.Core.Structures;
 using VkBot.DB;
 using VkNet.Abstractions;
 using VkNet.Enums.SafetyEnums;
@@ -38,7 +39,7 @@ namespace VkBot.Core.Commands
                     Action = new MessageKeyboardButtonAction() {
                         Label = command.ButtonLabel,
                         Type = KeyboardButtonActionType.Text,
-                        Payload = $"{{\"KeyWord\":\"{command.KeyWord}\"}}",
+                        Payload = new Payload() { Command = command.KeyWord }.Serialize(),
                     },
                     Color = (command.AdminCommand) ? KeyboardButtonColor.Negative :KeyboardButtonColor.Default
                 });

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VkBot.Core.Messages;
+using VkBot.Core.Structures;
 using VkBot.DB;
 
 namespace VkBot.Core.Commands
@@ -25,7 +26,8 @@ namespace VkBot.Core.Commands
             {
                 try
                 {
-                    var message =  con.History.FirstOrDefault(_ => _.Id == int.Parse(request.Payload ?? "0"));
+                    var payload = new Payload().Deserialize(request.Payload);
+                    var message =  con.History.FirstOrDefault(_ => payload.Values.Any(p => Int16.Parse(p) == _.Id ));
                     var replyMessage = new List<long>();
                     replyMessage.Add(message.Id);
                     response.ForwardedMessages = replyMessage;
