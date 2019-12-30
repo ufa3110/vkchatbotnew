@@ -26,16 +26,12 @@ namespace VkBot.Controllers {
 
         private readonly IVkApi _vkApi;
 
-        private readonly CommandsManager manager = new CommandsManager();
-
-        public List<String> Messages { get; set; } = new List<string>();
 
 
         public CallbackController(IVkApi vkApi, IConfiguration configuration)
         {
             _configuration = configuration;
             _vkApi = vkApi;
-            manager.Init();
         }
 
 
@@ -55,54 +51,13 @@ namespace VkBot.Controllers {
                 // Новое сообщение
                 case "message_new":
                     {
-                        Debug.WriteLine("message_new recieved");
                         JsonSerializer serializer = new JsonSerializer();
                         // Десериализация
                         var msg = Message.FromJson(new VkResponse(updates.Object.Message));
-                        Trace.WriteLine($"message_new deserialized, msg.text = {msg.Text}");
                         try
                         {
-                            var payload = new Payload().Deserialize(msg.Payload ?? "");
-
-                            var receivedCommand = manager.CommandsList.FirstOrDefault(_ => msg.Text.Contains(_.KeyWord)) 
-                                ?? manager.CommandsList.FirstOrDefault(_ => payload?.Command.Contains(_.KeyWord) ?? false);
-
-                            var response = new Response();
-                            var request = new Request(msg,_vkApi);
-
-                            if (receivedCommand != null)
-                            {
-                                if (receivedCommand.AdminCommand)
-                                {
-                                    if (Admins.AdminsList.Contains(msg.FromId.ToString()))
-                                    {
-                                        response = receivedCommand.Execute(request);
-                                    }
-                                    else
-                                    {
-                                        response.ResponseText = "Недостаточно прав для выполнения данной команды";
-                                        response.UserId = msg.FromId;
-                                        response.ForwardedMessages = request.ForwardedMessages;
-                                    }
-                                }
-                                else
-                                {
-                                    response = receivedCommand.Execute(request);
-                                }
-
-                                if (response.ResponseText != null && response.ResponseText != "")
-                                {
-                                    _vkApi.Messages.Send(new MessagesSendParams
-                                    {
-                                        RandomId = new DateTime().Millisecond,
-                                        PeerId = msg.PeerId.Value,
-                                        Message = response.ResponseText,
-                                        ForwardMessages = response?.ForwardedMessages,
-                                        UserId = response?.UserId ?? 0,
-                                        Keyboard = response.Keyboard,
-                                    });
-                                }
-                            }
+                            var parser = new CommandParser(msg, _vkApi);
+                            parser.Parse();
                         }
                         catch (Exception ex)
                         {
