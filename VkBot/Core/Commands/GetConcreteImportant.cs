@@ -8,9 +8,9 @@ using VkBot.DB;
 
 namespace VkBot.Core.Commands
 {
-    public class ConcreteImportant : BaseServerCommand
+    public class GetConcreteImportant : BaseServerCommand
     {
-        public ConcreteImportant()
+        public GetConcreteImportant()
         {
             KeyWord = "показать";
         }

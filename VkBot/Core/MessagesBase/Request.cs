@@ -75,6 +75,14 @@ namespace VkBot.Core.Messages
             Payload = msg.Payload;
             vkApi = _vkApi;
             UserID = msg.FromId ?? 0;
+
+            if (msg.ForwardedMessages.Any() && msg.ReplyMessage?.Id != 0 )
+            {
+                var reply = new List<long>();
+                reply.Add(msg.ReplyMessage.Id ?? 0);
+                ForwardedMessages = reply.AsEnumerable();
+            }
+
         }
 
 

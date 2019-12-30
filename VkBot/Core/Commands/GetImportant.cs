@@ -51,7 +51,7 @@ namespace VkBot.Core.Commands
                     {
                         Action = new MessageKeyboardButtonAction() 
                         { 
-                            Label = $"\"{msg.Comment} \" ({new ConcreteImportant().KeyWord})",
+                            Label = $"\"{msg.Comment} \" ({new GetConcreteImportant().KeyWord})",
                             Type = KeyboardButtonActionType.Text,
                             Payload = payload.Serialize(),
                         },
