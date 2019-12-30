@@ -57,6 +57,10 @@ namespace VkBot.Core.Messages
         /// </summary>
         public IVkApi vkApi { get; set; }
 
+        /// <summary>
+        /// Само сообщение
+        /// </summary>
+        public Message Message { get; set; }
 
         /// <summary>
         /// Инициализирует <see cref="MessageId"/> значением <see cref="Guid.Empty"/>
@@ -75,6 +79,7 @@ namespace VkBot.Core.Messages
             Payload = msg.Payload;
             vkApi = _vkApi;
             UserID = msg.FromId ?? 0;
+            Message = msg;
 
             if (msg.ForwardedMessages.Any() && msg.ReplyMessage?.Id != 0 )
             {

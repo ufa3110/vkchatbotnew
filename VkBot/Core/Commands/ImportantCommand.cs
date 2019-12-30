@@ -54,18 +54,17 @@ namespace VkBot.Core.Commands
                     //inline keyboard
 
                     var reply = new List<long>();
-                    reply.Add(request.ReplyMessage);
+                    reply.Add(request.Message.Id ?? 0);
 
                     request.vkApi.Messages.Send(new MessagesSendParams
-                {
-                    RandomId = new DateTime().Millisecond,
-                    PeerId = request.UserID,
-                    Message = "Важно?",
-                    ForwardMessages = reply,
-                    UserId = response?.UserId ?? 0,
-                    Keyboard = GetInlineVoteKeyboard(),
-                });
-
+                    {
+                        RandomId = new DateTime().Millisecond,
+                        PeerId = request.UserID,
+                        Message = "Важно?",
+                        ForwardMessages = reply,
+                        UserId = response?.UserId ?? 0,
+                        Keyboard = GetInlineVoteKeyboard(),
+                    });
 
                 }
                 else
