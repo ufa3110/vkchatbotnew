@@ -13,6 +13,7 @@ using VkBot.Core.Messages;
 using System.Diagnostics;
 using VkBot.Core.Users;
 using VkBot.Core.Structures;
+using VkBot.Controllers.Messages;
 
 namespace VkBot.Controllers {
     [Route("api/[controller]")]
@@ -56,7 +57,7 @@ namespace VkBot.Controllers {
                         var msg = Message.FromJson(new VkResponse(updates.Object.Message));
                         try
                         {
-                            var parser = new CommandParser(msg, _vkApi);
+                            var parser = new NewMessageParser(msg, _vkApi);
                             parser.Parse();
                         }
                         catch (Exception ex)

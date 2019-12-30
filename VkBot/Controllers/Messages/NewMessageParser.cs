@@ -10,11 +10,11 @@ using VkNet.Abstractions;
 using VkNet.Model;
 using VkNet.Model.RequestParams;
 
-namespace VkBot.Controllers
+namespace VkBot.Controllers.Messages
 {
-    public class CommandParser
+    public class NewMessageParser
     {
-        public CommandParser(Message msg, IVkApi vkApi)
+        public NewMessageParser(Message msg, IVkApi vkApi)
         {
             _msg = msg;
             manager.Init();
