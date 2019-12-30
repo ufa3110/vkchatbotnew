@@ -65,7 +65,7 @@ namespace VkBot.Controllers {
                             var payload = new Payload().Deserialize(msg.Payload ?? "");
 
                             var receivedCommand = manager.CommandsList.FirstOrDefault(_ => msg.Text.Contains(_.KeyWord)) 
-                                ?? manager.CommandsList.FirstOrDefault(_ => payload.Command.Contains(_.KeyWord));
+                                ?? manager.CommandsList.FirstOrDefault(_ => payload?.Command.Contains(_.KeyWord) ?? false);
 
                             var response = new Response();
                             var request = new Request()
