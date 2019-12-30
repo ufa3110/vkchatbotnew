@@ -52,14 +52,16 @@ namespace VkBot.Core.Commands
                     transaction.Commit();
 
                     //inline keyboard
-                    
+
+                    var reply = new List<long>();
+                    reply.Add(request.ReplyMessage);
 
                     request.vkApi.Messages.Send(new MessagesSendParams
                 {
                     RandomId = new DateTime().Millisecond,
                     PeerId = request.UserID,
                     Message = "Важно?",
-                    ForwardMessages = response?.ForwardedMessages,
+                    ForwardMessages = reply,
                     UserId = response?.UserId ?? 0,
                     Keyboard = GetInlineVoteKeyboard(),
                 });
