@@ -68,16 +68,7 @@ namespace VkBot.Controllers {
                                 ?? manager.CommandsList.FirstOrDefault(_ => payload?.Command.Contains(_.KeyWord) ?? false);
 
                             var response = new Response();
-                            var request = new Request()
-                            {
-                                UserName = $"@{msg.FromId ?? 0}",
-                                ForwardedMessages = msg.ForwardedMessages?.Select(_ => _.Id ?? 0).AsEnumerable<long>(),
-                                ReplyMessage = msg.ReplyMessage?.Id ?? 0,
-                                MessageText = msg.Text,
-                                Payload = msg.Payload,
-                                vkApi = _vkApi,
-                                UserID = msg.FromId ?? 0,
-                            };
+                            var request = new Request(msg,_vkApi);
 
                             if (receivedCommand != null)
                             {
@@ -99,7 +90,7 @@ namespace VkBot.Controllers {
                                     response = receivedCommand.Execute(request);
                                 }
 
-                                if (response.ResponseText != string.Empty)
+                                if (response.ResponseText != null && response.ResponseText != "")
                                 {
                                     _vkApi.Messages.Send(new MessagesSendParams
                                     {

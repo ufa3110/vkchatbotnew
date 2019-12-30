@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VkNet.Abstractions;
+using VkNet.Model;
 
 namespace VkBot.Core.Messages
 {
@@ -64,6 +65,18 @@ namespace VkBot.Core.Messages
             : this(null)
         {
         }
+
+        public Request (Message msg, IVkApi _vkApi)
+        {
+            UserName = $"@{msg.FromId ?? 0}";
+            ForwardedMessages = msg.ForwardedMessages?.Select(_ => _.Id ?? 0).AsEnumerable<long>();
+            ReplyMessage = msg.ReplyMessage?.Id ?? 0;
+            MessageText = msg.Text;
+            Payload = msg.Payload;
+            vkApi = _vkApi;
+            UserID = msg.FromId ?? 0;
+        }
+
 
         /// <summary>
         /// <paramref name="messageId"/> должно быть либо null либо не должно быть <see cref="Guid.Empty"/>
