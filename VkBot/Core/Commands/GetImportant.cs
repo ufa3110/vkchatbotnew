@@ -59,26 +59,11 @@ namespace VkBot.Core.Commands
                     });
                     keyboardButtons.Add(buttons);
                 }
-                var backButton = new List<MessageKeyboardButton>();
-                var newKeyBoard = new GetKeyboard();
-
-                backButton.Add(new MessageKeyboardButton()
-                {
-                    Action = new MessageKeyboardButtonAction()
-                    {
-                        Label = newKeyBoard.ButtonLabel,
-                        Type = KeyboardButtonActionType.Text,
-                        Payload = new Payload() 
-                        {
-                            Command = newKeyBoard.KeyWord
-                        }.Serialize(),
-                    },
-                    Color = KeyboardButtonColor.Default
-                });
-                keyboardButtons.Add(backButton);
+                
 
             }
-            
+            keyboardButtons.AddBackButton();
+
             keyboard.Buttons = keyboardButtons;
             response.Keyboard = keyboard;
         }
