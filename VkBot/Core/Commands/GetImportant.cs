@@ -35,14 +35,20 @@ namespace VkBot.Core.Commands
             {
                 foreach (var msg in con.History)
                 {
+                    var values = new List<string>();
+                    values.Add(msg.Id.ToString());
+                    var payload = new Payload()
+                    {
+                        Values = values,
+                    };
                     var buttons = new List<MessageKeyboardButton>();
                     buttons.Add(new MessageKeyboardButton()
                     {
                         Action = new MessageKeyboardButtonAction() 
                         { 
-                            Label = $"\"{msg.Comment} \" (" + new ConcreteImportant().KeyWord+")",
+                            Label = $"\"{msg.Comment} \" ({new ConcreteImportant().KeyWord})",
                             Type = KeyboardButtonActionType.Text,
-                            Payload = msg.Id.ToString(),
+                            Payload = payload.Serialize(),
                         },
                         Color = KeyboardButtonColor.Default
                     });
