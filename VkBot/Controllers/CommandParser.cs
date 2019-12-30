@@ -16,7 +16,7 @@ namespace VkBot.Controllers
     {
         public CommandParser(Message msg, IVkApi vkApi)
         {
-            msg = _msg;
+            _msg = msg;
             manager.Init();
             _vkApi = vkApi;
         }
