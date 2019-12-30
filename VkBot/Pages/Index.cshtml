@@ -1,0 +1,15 @@
+﻿@page
+@model VkBot.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h2>Counters</h2>
+<p>
+    Local Time:  @Model.LocalTime <p/>
+    Last Message : @Model.LastMessage <p/>
+    Exceptions : @Model.Exceptions <p/>
+    Messages Count total : @Model.Counter <p/>
+    DB Load : @Model.Load% <p/>
+    Logs : @Model.Logs <p/>
+</p>

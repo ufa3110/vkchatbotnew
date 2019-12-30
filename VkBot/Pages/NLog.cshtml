@@ -1,0 +1,23 @@
+﻿@page
+@model VkBot.Pages.NLogModel
+@{
+    ViewData["Title"] = "NLOG";
+}
+
+<h2>LOGS</h2>
+<p>
+                <ol>
+                    @foreach (string dataLine in @Model.UserData)
+                    {
+                        <li>
+                            LOG
+                            <ul>
+                                @foreach (string dataItem in dataLine.Split('╨'))
+                                {
+                                    <li>@dataItem</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ol>
+</p>

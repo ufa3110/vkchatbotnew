@@ -1,0 +1,178 @@
+2019-12-24 13:57:03.6175 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2019-12-24 13:57:03.7073 Debug Found assembly location directory: 'D:\other\123\1\VkBot\bin\Debug\netcoreapp3.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2019-12-24 13:57:03.7073 Debug Search for auto loading files in location: D:\other\123\1\VkBot\bin\Debug\netcoreapp3.0
+2019-12-24 13:57:03.7073 Debug Start auto loading, location: D:\other\123\1\VkBot\bin\Debug\netcoreapp3.0
+2019-12-24 13:57:03.7073 Info Auto loading assembly file: D:\other\123\1\VkBot\bin\Debug\netcoreapp3.0\NLog.Extensions.Logging.dll
+2019-12-24 13:57:03.7073 Info Loading assembly file: D:\other\123\1\VkBot\bin\Debug\netcoreapp3.0\NLog.Extensions.Logging.dll
+2019-12-24 13:57:03.7405 Info NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 1.6.0.1196. Product version: 1.6.0.
+2019-12-24 13:57:03.7405 Debug ScanAssembly('NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2019-12-24 13:57:03.7405 Info Auto loading assembly file: D:\other\123\1\VkBot\bin\Debug\netcoreapp3.0\NLog.Extensions.Logging.dll succeeded!
+2019-12-24 13:57:03.7405 Info Auto loading assembly file: D:\other\123\1\VkBot\bin\Debug\netcoreapp3.0\NLog.Web.AspNetCore.dll
+2019-12-24 13:57:03.7405 Info Loading assembly file: D:\other\123\1\VkBot\bin\Debug\netcoreapp3.0\NLog.Web.AspNetCore.dll
+2019-12-24 13:57:03.7539 Info NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.9.0.1511. Product version: 4.9.0.
+2019-12-24 13:57:03.7539 Debug ScanAssembly('NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2019-12-24 13:57:03.7539 Info Auto loading assembly file: D:\other\123\1\VkBot\bin\Debug\netcoreapp3.0\NLog.Web.AspNetCore.dll succeeded!
+2019-12-24 13:57:03.7539 Trace Assembly 'Microsoft.Extensions.Logging, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2019-12-24 13:57:03.7539 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2019-12-24 13:57:03.7539 Trace Assembly 'NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2019-12-24 13:57:03.7539 Trace Assembly 'NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2019-12-24 13:57:03.7539 Debug Auto loading done
+2019-12-24 13:57:03.7539 Info Message Template Auto Format enabled
+2019-12-24 13:57:03.7539 Info Loading assembly: NLog.Web.AspNetCore
+2019-12-24 13:57:03.7539 Debug ScanAssembly('NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2019-12-24 13:57:03.7763 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7763 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2019-12-24 13:57:03.7763 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2019-12-24 13:57:03.7855 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2019-12-24 13:57:03.7855 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7855 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2019-12-24 13:57:03.7855 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7855 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2019-12-24 13:57:03.7855 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2019-12-24 13:57:03.7855 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2019-12-24 13:57:03.7855 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2019-12-24 13:57:03.7855 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2019-12-24 13:57:03.7855 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7855 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2019-12-24 13:57:03.7855 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7855 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2019-12-24 13:57:03.7993 Debug Setting 'FileTarget.name' to 'fileTarget'
+2019-12-24 13:57:03.7993 Debug Setting 'FileTarget.fileName' to 'vkBot.log'
+2019-12-24 13:57:03.7993 Debug Setting 'FileTarget.layout' to ' -------------- ${level} (${longdate}) --------------${newline} ${newline} Call Site: ${callsite}${newline} Exception Type: ${exception:format=Type}${newline} Exception Message: ${exception:format=Message}${newline} Stack Trace: ${exception:format=StackTrace}${newline} Additional Info: ${message}${newline}'
+2019-12-24 13:57:03.7993 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7993 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2019-12-24 13:57:03.7993 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7993 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2019-12-24 13:57:03.7993 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7993 Trace Scanning NewLineLayoutRenderer 'Layout Renderer: ${newline}'
+2019-12-24 13:57:03.7993 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7993 Trace Scanning NewLineLayoutRenderer 'Layout Renderer: ${newline}'
+2019-12-24 13:57:03.7993 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7993 Trace Scanning CallSiteLayoutRenderer 'Layout Renderer: ${callsite}'
+2019-12-24 13:57:03.7993 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.7993 Trace Scanning NewLineLayoutRenderer 'Layout Renderer: ${newline}'
+2019-12-24 13:57:03.8206 Debug Setting 'ExceptionLayoutRenderer.format' to 'Type'
+2019-12-24 13:57:03.8206 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.8206 Trace Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2019-12-24 13:57:03.8206 Trace  Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2019-12-24 13:57:03.8206 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.8206 Trace Scanning NewLineLayoutRenderer 'Layout Renderer: ${newline}'
+2019-12-24 13:57:03.8206 Debug Setting 'ExceptionLayoutRenderer.format' to 'Message'
+2019-12-24 13:57:03.8206 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.8206 Trace Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2019-12-24 13:57:03.8206 Trace  Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2019-12-24 13:57:03.8206 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.8206 Trace Scanning NewLineLayoutRenderer 'Layout Renderer: ${newline}'
+2019-12-24 13:57:03.8206 Debug Setting 'ExceptionLayoutRenderer.format' to 'StackTrace'
+2019-12-24 13:57:03.8206 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.8206 Trace Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2019-12-24 13:57:03.8206 Trace  Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2019-12-24 13:57:03.8206 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.8206 Trace Scanning NewLineLayoutRenderer 'Layout Renderer: ${newline}'
+2019-12-24 13:57:03.8206 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.8206 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2019-12-24 13:57:03.8206 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2019-12-24 13:57:03.8206 Trace Scanning NewLineLayoutRenderer 'Layout Renderer: ${newline}'
+2019-12-24 13:57:03.8206 Info Adding target FileTarget(Name=fileTarget)
+2019-12-24 13:57:03.8206 Debug Registered target fileTarget: NLog.Targets.FileTarget
+2019-12-24 13:57:03.8206 Trace ParseRulesElement
+2019-12-24 13:57:03.8369 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2019-12-24 13:57:03.8369 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2019-12-24 13:57:03.8446 Debug --- NLog configuration dump ---
+2019-12-24 13:57:03.8446 Debug Targets:
+2019-12-24 13:57:03.8446 Debug File Target[fileTarget]
+2019-12-24 13:57:03.8446 Debug Rules:
+2019-12-24 13:57:03.8446 Debug logNamePattern: (fileLogger:Equals) levels: [ Error ] appendTo: [ fileTarget ]
+2019-12-24 13:57:03.8446 Debug --- End of NLog configuration dump ---
+2019-12-24 13:57:03.8446 Trace FindReachableObject<System.Object>:
+2019-12-24 13:57:03.8446 Trace Scanning LoggingRule 'logNamePattern: (fileLogger:Equals) levels: [ Error ] appendTo: [ fileTarget ]'
+2019-12-24 13:57:03.8446 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2019-12-24 13:57:03.8446 Trace  Scanning FileTarget 'File Target[fileTarget]'
+2019-12-24 13:57:03.8446 Trace   Scanning Property FileName ''vkBot.log'' NLog.Layouts
+2019-12-24 13:57:03.8446 Trace   Scanning SimpleLayout ''vkBot.log''
+2019-12-24 13:57:03.8446 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2019-12-24 13:57:03.8446 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8446 Trace   Scanning Property Layout '' -------------- ${level} (${longdate}) --------------${newline} ${newline} Call Site: ${callsite}${newline} Exception Type: ${exception:format=Type}${newline} Exception Message: ${exception:format=Message}${newline} Stack Trace: ${exception:format=StackTrace}${newline} Additional Info: ${message}${newline}'' NLog.Layouts
+2019-12-24 13:57:03.8446 Trace   Scanning SimpleLayout '' -------------- ${level} (${longdate}) --------------${newline} ${newline} Call Site: ${callsite}${newline} Exception Type: ${exception:format=Type}${newline} Exception Message: ${exception:format=Message}${newline} Stack Trace: ${exception:format=StackTrace}${newline} Additional Info: ${message}${newline}''
+2019-12-24 13:57:03.8446 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2019-12-24 13:57:03.8446 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8446 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2019-12-24 13:57:03.8446 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8446 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2019-12-24 13:57:03.8446 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8446 Trace    Scanning CallSiteLayoutRenderer 'Layout Renderer: ${callsite}'
+2019-12-24 13:57:03.8446 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8446 Trace    Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2019-12-24 13:57:03.8446 Trace     Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2019-12-24 13:57:03.8446 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8446 Trace    Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2019-12-24 13:57:03.8446 Trace     Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2019-12-24 13:57:03.8446 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8446 Trace    Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2019-12-24 13:57:03.8446 Trace     Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2019-12-24 13:57:03.8446 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8446 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2019-12-24 13:57:03.8446 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8446 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2019-12-24 13:57:03.8446 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2019-12-24 13:57:03.8446 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2019-12-24 13:57:03.8446 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2019-12-24 13:57:03.8446 Info Found 20 configuration items
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${literal}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${message}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${literal}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${exception}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${literal}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${exception}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${literal}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${exception}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${literal}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${callsite}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${literal}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${longdate}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${literal}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${level}
+2019-12-24 13:57:03.8446 Trace Initializing Layout Renderer: ${literal}
+2019-12-24 13:57:03.8602 Trace Initializing ' -------------- ${level} (${longdate}) --------------${newline} ${newline} Call Site: ${callsite}${newline} Exception Type: ${exception:format=Type}${newline} Exception Message: ${exception:format=Message}${newline} Stack Trace: ${exception:format=StackTrace}${newline} Additional Info: ${message}${newline}'
+2019-12-24 13:57:03.8602 Trace FindReachableObject<System.Object>:
+2019-12-24 13:57:03.8602 Trace Scanning SimpleLayout '' -------------- ${level} (${longdate}) --------------${newline} ${newline} Call Site: ${callsite}${newline} Exception Type: ${exception:format=Type}${newline} Exception Message: ${exception:format=Message}${newline} Stack Trace: ${exception:format=StackTrace}${newline} Additional Info: ${message}${newline}''
+2019-12-24 13:57:03.8602 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2019-12-24 13:57:03.8602 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8602 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2019-12-24 13:57:03.8602 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8602 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2019-12-24 13:57:03.8602 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8602 Trace  Scanning CallSiteLayoutRenderer 'Layout Renderer: ${callsite}'
+2019-12-24 13:57:03.8602 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8602 Trace  Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2019-12-24 13:57:03.8602 Trace   Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2019-12-24 13:57:03.8602 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8602 Trace  Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2019-12-24 13:57:03.8602 Trace   Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2019-12-24 13:57:03.8602 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8602 Trace  Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2019-12-24 13:57:03.8602 Trace   Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2019-12-24 13:57:03.8602 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8602 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2019-12-24 13:57:03.8602 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8602 Trace Initializing Layout Renderer: ${literal}
+2019-12-24 13:57:03.8602 Trace Initializing 'vkBot.log'
+2019-12-24 13:57:03.8602 Trace FindReachableObject<System.Object>:
+2019-12-24 13:57:03.8602 Trace Scanning SimpleLayout ''vkBot.log''
+2019-12-24 13:57:03.8602 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2019-12-24 13:57:03.8602 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2019-12-24 13:57:03.8602 Trace Initializing File Target[fileTarget]
+2019-12-24 13:57:03.8602 Trace FindReachableObject<NLog.Layouts.Layout>:
+2019-12-24 13:57:03.8602 Trace Scanning FileTarget 'File Target[fileTarget]'
+2019-12-24 13:57:03.8602 Trace  Scanning Property FileName ''vkBot.log'' NLog.Layouts
+2019-12-24 13:57:03.8602 Trace  Scanning SimpleLayout ''vkBot.log''
+2019-12-24 13:57:03.8602 Trace  Scanning Property Layout '' -------------- ${level} (${longdate}) --------------${newline} ${newline} Call Site: ${callsite}${newline} Exception Type: ${exception:format=Type}${newline} Exception Message: ${exception:format=Message}${newline} Stack Trace: ${exception:format=StackTrace}${newline} Additional Info: ${message}${newline}'' NLog.Layouts
+2019-12-24 13:57:03.8602 Trace  Scanning SimpleLayout '' -------------- ${level} (${longdate}) --------------${newline} ${newline} Call Site: ${callsite}${newline} Exception Type: ${exception:format=Type}${newline} Exception Message: ${exception:format=Message}${newline} Stack Trace: ${exception:format=StackTrace}${newline} Additional Info: ${message}${newline}''
+2019-12-24 13:57:03.8602 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2019-12-24 13:57:03.8602 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2019-12-24 13:57:03.8602 Trace File Target[fileTarget] has 2 layouts
+2019-12-24 13:57:03.8776 Trace FileTarget(Name=fileTarget): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2019-12-24 13:57:03.8776 Info Configuration initialized.
+2019-12-24 13:57:03.8776 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.6.8.10751. Product version: 4.6.8.
+2019-12-24 13:57:03.8776 Debug Targets not configured for logger: VkBot.Pages.IndexModel
+2019-12-24 13:57:08.6560 Debug Targets not configured for logger: VkBot.Pages.NLogModel
