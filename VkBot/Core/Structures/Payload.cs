@@ -19,16 +19,24 @@ namespace VkBot.Core.Structures
         public string Command { get; set; }
 
         /// <summary>
-        /// Параметр
+        /// Параметры
         /// </summary>
-        [JsonProperty("Param")]
-        public string Param { get; set; }
+        [JsonProperty("Params")]
+        public List<PayloadParam> Params { get; set; } = new List<PayloadParam>();
 
-        /// <summary>
-        /// Значение
-        /// </summary>
-        [JsonProperty("Value")]
-        public List<string> Values { get; set; } = new List<string>();
+
+        public class PayloadParam
+        {
+            /// <summary>
+            /// Имя параметра
+            /// </summary>
+            public string ParamName { get; set; }
+            /// <summary>
+            /// Значение
+            /// </summary>
+            public string Value { get; set; }
+        }
+
 
         public string Serialize()
         {

@@ -27,7 +27,7 @@ namespace VkBot.Core.Commands
                 try
                 {
                     var payload = new Payload().Deserialize(request.Payload);
-                    var message =  con.History.FirstOrDefault(_ => payload.Values.Any(p => Int16.Parse(p) == _.Id ));
+                    var message =  con.History.FirstOrDefault(_ => payload.Params.Any(p => Int16.Parse(p.Value) == _.Id ));
                     var replyMessage = new List<long>();
                     replyMessage.Add(message.Id);
                     response.ForwardedMessages = replyMessage;

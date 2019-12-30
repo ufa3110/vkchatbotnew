@@ -12,6 +12,7 @@ using VkBot.DB;
 using VkNet.Abstractions;
 using VkNet.Enums.SafetyEnums;
 using VkNet.Model.Keyboard;
+using static VkBot.Core.Structures.Payload;
 
 namespace VkBot.Core.Commands
 {
@@ -35,11 +36,15 @@ namespace VkBot.Core.Commands
             {
                 foreach (var msg in con.History)
                 {
-                    var values = new List<string>();
-                    values.Add(msg.Id.ToString());
+                    var parameters = new List<PayloadParam>();
+                    parameters.Add(new PayloadParam()
+                    {
+                        ParamName = "Id сообщения",
+                        Value = msg.Id.ToString(),
+                    });
                     var payload = new Payload()
                     {
-                        Values = values,
+                        Params = parameters,
                     };
                     var buttons = new List<MessageKeyboardButton>();
                     buttons.Add(new MessageKeyboardButton()
