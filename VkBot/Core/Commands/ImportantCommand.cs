@@ -86,9 +86,6 @@ namespace VkBot.Core.Commands
                 },
                 Color = KeyboardButtonColor.Positive
             });
-            keyboardButtons.Add(buttons);
-
-            buttons = new List<MessageKeyboardButton>();
             buttons.Add(new MessageKeyboardButton()
             {
                 Action = new MessageKeyboardButtonAction()
