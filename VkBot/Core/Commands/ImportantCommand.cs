@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using VkBot.Core.Messages;
 using VkBot.Core.Structures;
 using VkBot.DB;
+using VkBot.Keyboards;
 using VkNet.Abstractions;
 using VkNet.Enums.SafetyEnums;
 using VkNet.Model.Keyboard;
@@ -51,8 +52,6 @@ namespace VkBot.Core.Commands
                     
                     transaction.Commit();
 
-                    //inline keyboard
-
                     var reply = new List<long>();
                     reply.Add(request.Message.Id ?? 0);
 
@@ -63,7 +62,7 @@ namespace VkBot.Core.Commands
                         Message = "Важно?",
                         ForwardMessages = reply,
                         UserId = response?.UserId ?? 0,
-                        Keyboard = GetInlineVoteKeyboard(),
+                        Keyboard = response.Keyboard.SetInlineVoteKeyboard(),
                     });
 
                 }
@@ -72,37 +71,6 @@ namespace VkBot.Core.Commands
                     response.ResponseText = "нужно послать ответ на сообщение)";
                 }
             }
-        }
-
-        public MessageKeyboard GetInlineVoteKeyboard()
-        {
-            var keyboardButtons = new List<List<MessageKeyboardButton>>();
-            var buttons = new List<MessageKeyboardButton>();
-            buttons.Add(new MessageKeyboardButton()
-            {
-                Action = new MessageKeyboardButtonAction()
-                {
-                    Label = "Важно",
-                    Type = KeyboardButtonActionType.Text,
-                },
-                Color = KeyboardButtonColor.Positive
-            });
-            buttons.Add(new MessageKeyboardButton()
-            {
-                Action = new MessageKeyboardButtonAction()
-                {
-                    Label = "Не очень",
-                    Type = KeyboardButtonActionType.Text,
-                },
-                Color = KeyboardButtonColor.Negative
-            });
-            keyboardButtons.Add(buttons);
-
-            return new MessageKeyboard() {
-                Inline = true,
-                Buttons = keyboardButtons,
-            };
-
         }
 
     }

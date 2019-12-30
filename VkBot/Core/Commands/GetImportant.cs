@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using VkBot.Core.Messages;
 using VkBot.Core.Structures;
 using VkBot.DB;
+using VkBot.Keyboards;
 using VkNet.Abstractions;
 using VkNet.Enums.SafetyEnums;
 using VkNet.Model.Keyboard;

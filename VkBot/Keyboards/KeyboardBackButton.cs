@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VkBot.Core.Commands;
+using VkBot.Core.Structures;
 using VkNet.Enums.SafetyEnums;
 using VkNet.Model.Keyboard;
 
-namespace VkBot.Core.Structures
+namespace VkBot.Keyboards
 {
     public class KeyboardBackButton : MessageKeyboardButton
     {

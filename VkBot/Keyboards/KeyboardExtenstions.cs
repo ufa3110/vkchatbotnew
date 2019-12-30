@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VkNet.Model.Keyboard;
 
-namespace VkBot.Core.Structures
+namespace VkBot.Keyboards
 {
     public static class KeyboardExtenstions
     {
@@ -20,5 +20,13 @@ namespace VkBot.Core.Structures
 
             keyboardButtons.Add(backButton);
         }
+
+        public static MessageKeyboard SetInlineVoteKeyboard (this MessageKeyboard keyboardButtons)
+        {
+            var voteKeyboard = new InlineVoteKeyboard();
+            keyboardButtons = voteKeyboard.GetInlineVoteKeyboard();
+            return keyboardButtons;
+        }
+
     }
 }
