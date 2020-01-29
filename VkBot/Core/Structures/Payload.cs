@@ -44,8 +44,15 @@ namespace VkBot.Core.Structures
         }
         public static Payload Deserialize(string SerializedJSONString)
         {
-            var stuff = (Payload)JsonConvert.DeserializeObject(SerializedJSONString, typeof(Payload));
-            return stuff;
+            try
+            {
+                var payload = (Payload)JsonConvert.DeserializeObject(SerializedJSONString, typeof(Payload));
+                return payload;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 
