@@ -1,16 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VkBot.Core.Messages;
 using VkBot.Core.Structures;
 using VkBot.DB;
 using VkBot.Keyboards;
-using VkNet.Abstractions;
 using VkNet.Enums.SafetyEnums;
 using VkNet.Model.Keyboard;
 using static VkBot.Core.Structures.Payload;
@@ -41,7 +34,7 @@ namespace VkBot.Core.Commands
 
                 var pages = GetMessagePages(historyList.ToList());
 
-                var payload = new Payload().Deserialize(request.Payload);
+                var payload = Deserialize(request.Payload);
                 int.TryParse(payload.Params.FirstOrDefault().ToString(), out var pageNumber);
 
                 pageNumber = (pageNumber == 0) ? 1 : pageNumber;

@@ -23,7 +23,7 @@ namespace VkBot.Controllers.Messages
 
         public void Parse()
         {
-            var payload = new Payload().Deserialize(_msg.Payload ?? "");
+            var payload = Payload.Deserialize(_msg.Payload ?? "");
 
             var receivedCommand = manager.CommandsList.FirstOrDefault(_ => _msg.Text.Contains(_.KeyWord))
                 ?? manager.CommandsList.FirstOrDefault(_ => payload?.Command.Contains(_.KeyWord) ?? false);

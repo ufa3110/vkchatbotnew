@@ -42,7 +42,7 @@ namespace VkBot.Core.Structures
         {
             return JsonConvert.SerializeObject(this);
         }
-        public Payload Deserialize(string SerializedJSONString)
+        public static Payload Deserialize(string SerializedJSONString)
         {
             var stuff = (Payload)JsonConvert.DeserializeObject(SerializedJSONString, typeof(Payload));
             return stuff;

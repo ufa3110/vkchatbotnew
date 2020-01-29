@@ -26,7 +26,7 @@ namespace VkBot.Core.Commands
             {
                 try
                 {
-                    var payload = new Payload().Deserialize(request.Payload);
+                    var payload = Payload.Deserialize(request.Payload);
                     var messagesList = con.History.ToList();
 
                     var messageQ = from history in con.History
