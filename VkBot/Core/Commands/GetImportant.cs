@@ -35,7 +35,7 @@ namespace VkBot.Core.Commands
                 var pages = GetMessagePages(historyList.ToList());
 
                 var payload = Deserialize(request.Payload);
-                int.TryParse(payload?.Params.FirstOrDefault().ToString() ?? "", out var pageNumber);
+                int.TryParse(payload?.Params?.FirstOrDefault()?.ToString() ?? "", out var pageNumber);
 
                 pageNumber = (pageNumber == 0) ? 1 : pageNumber;
 
