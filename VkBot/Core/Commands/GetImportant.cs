@@ -41,7 +41,10 @@ namespace VkBot.Core.Commands
 
                 foreach (var msg in pages[pageNumber - 1])
                 {
-                    keyboardButtons.Add(GetMessageButton(msg));
+                    if (msg != null)
+                    {
+                        keyboardButtons.Add(GetMessageButton(msg));
+                    }
                 }
             }
             keyboardButtons.AddBackButton();
