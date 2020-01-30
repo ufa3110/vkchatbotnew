@@ -37,14 +37,23 @@ namespace VkBot.Core.Commands
                 var payload = Deserialize(request.Payload);
                 int.TryParse(payload?.Params?.FirstOrDefault()?.ToString() ?? "", out var pageNumber);
 
-                pageNumber = (pageNumber == 0) ? 1 : pageNumber;
-                response.ResponseText += $"\n кол-во страниц: {pages.Count}, \n pageNumber: {pageNumber} ";
-                foreach (var msg in pages[pageNumber - 1])
+                if (pageNumber != 0)
+                {
+                    pageNumber--;
+                }
+
+                response.ResponseText += 
+                    $"\n кол-во страниц: {pages.Count}," +
+                    $"\n pageNumber: {pageNumber} " +
+                    $"\n historyList.Count: {historyList.Count()}";
+
+                foreach (var msg in pages[pageNumber])
                 {
                     if (msg != null)
                     {
                         keyboardButtons.Add(GetMessageButton(msg));
                     }
+                    response.ResponseText += "Вход в цикл на GetMessageButtons";
                 }
             }
             keyboardButtons.AddBackButton();
