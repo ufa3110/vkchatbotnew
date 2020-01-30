@@ -75,13 +75,13 @@ namespace VkBot.Core.Commands
                 {
                     buttonsCounter = 0;
                     pages.Add(page);
-                    page.Clear();
+                    page = new List<DB.Messages>();
                 }
             }
             if (buttonsCounter != 0)
             {
                 pages.Add(page);
-                page.Clear();
+                page = new List<DB.Messages>();
             }
 
             return pages;
