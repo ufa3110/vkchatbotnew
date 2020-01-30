@@ -90,7 +90,7 @@ namespace VkBot.Core.Commands
                     Color = KeyboardButtonColor.Default
                 });
             }
-            if (pageNumber < pagesCount)
+            if (pageNumber < pagesCount - 1)
             {
                 keyboardButtons.Add(new MessageKeyboardButton()
                 {
