@@ -22,7 +22,7 @@ namespace VkBot.Core.Commands
 
         public override void Calculate (Request request, Response response)
         {
-            response.ResponseText = $"важные:";
+            response.ResponseText = $"важные сообщения:";
 
             var keyboard = new MessageKeyboard();
             var keyboardButtons = new List<List<MessageKeyboardButton>>();
@@ -35,7 +35,7 @@ namespace VkBot.Core.Commands
                 var pages = GetMessagePages(historyList.ToList());
 
                 var payload = Deserialize(request.Payload);
-                int.TryParse(payload?.Params?.FirstOrDefault()?.ToString() ?? "", out var pageNumber);
+                int.TryParse(payload?.Params?.FirstOrDefault()?.Value?.ToString() ?? "", out var pageNumber);
 
                 if (pageNumber != 0)
                 {
@@ -43,9 +43,8 @@ namespace VkBot.Core.Commands
                 }
 
                 response.ResponseText += 
-                    $"\n кол-во страниц: {pages.Count}," +
-                    $"\n pageNumber: {pageNumber} " +
-                    $"\n historyList.Count: {historyList.Count()}";
+                    $"\n Страница: {pageNumber} из {pages.Count}," +
+                    $"\n Кол-во записей всего: {historyList.Count()}";
 
                 foreach (var msg in pages[pageNumber])
                 {
@@ -53,13 +52,64 @@ namespace VkBot.Core.Commands
                     {
                         keyboardButtons.Add(GetMessageButton(msg));
                     }
-                    response.ResponseText += "Вход в цикл на GetMessageButtons";
                 }
             }
             keyboardButtons.AddBackButton();
 
             keyboard.Buttons = keyboardButtons;
             response.Keyboard = keyboard;
+        }
+
+        private List<List<MessageKeyboardButton>> AddPagesNavigation(int pageNumber, int pagesCount)
+        {
+            var keyboardButtons = new List<List<MessageKeyboardButton>>();
+            var backButton = new List<MessageKeyboardButton>();
+
+            var parametersPrev = new List<PayloadParam>();
+            parametersPrev.Add(new PayloadParam()
+            {
+                ParamName = "Номер страницы",
+                Value = (pageNumber - 1).ToString(),
+            });
+
+            var parametersNext = new List<PayloadParam>();
+            parametersNext.Add(new PayloadParam()
+            {
+                ParamName = "Номер страницы",
+                Value = (pageNumber + 1).ToString(),
+            });
+
+            backButton.Add(new MessageKeyboardButton() 
+            {
+                Action = new MessageKeyboardButtonAction()
+                {
+                    Label = "Предыдущая страница",
+                    Type = KeyboardButtonActionType.Text,
+                    Payload = new Payload()
+                    {
+                        Command = KeyWord,
+                        Params = parametersPrev,
+                    }.Serialize(),
+                },
+                Color = KeyboardButtonColor.Default
+            });
+            backButton.Add(new MessageKeyboardButton()
+            {
+                Action = new MessageKeyboardButtonAction()
+                {
+                    Label = "Следующая страница",
+                    Type = KeyboardButtonActionType.Text,
+                    Payload = new Payload()
+                    {
+                        Command = KeyWord,
+                        Params = parametersNext,
+                    }.Serialize(),
+                },
+                Color = KeyboardButtonColor.Default
+            });
+
+            keyboardButtons.Add(backButton);
+            return keyboardButtons;
         }
 
         private List<List<DB.Messages>> GetMessagePages(List<DB.Messages> historyList)
