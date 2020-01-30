@@ -62,7 +62,7 @@ namespace VkBot.Core.Commands
                         Message = "Важно?",
                         ForwardMessages = reply,
                         UserId = response?.UserId ?? 0,
-                        Keyboard = response.Keyboard.SetInlineVoteKeyboard(),
+                        //Keyboard = response.Keyboard.SetInlineVoteKeyboard(),
                     });
 
                 }
