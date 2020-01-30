@@ -53,17 +53,17 @@ namespace VkBot.Core.Commands
                         keyboardButtons.Add(GetMessageButton(msg));
                     }
                 }
+                keyboardButtons.AddBackButton();
+                keyboardButtons.Add(GetPagesNavigationButtons(pageNumber,pages.Count));
             }
-            keyboardButtons.AddBackButton();
-
+            
             keyboard.Buttons = keyboardButtons;
             response.Keyboard = keyboard;
         }
 
-        private List<List<MessageKeyboardButton>> AddPagesNavigation(int pageNumber, int pagesCount)
+        private List<MessageKeyboardButton> GetPagesNavigationButtons(int pageNumber, int pagesCount)
         {
-            var keyboardButtons = new List<List<MessageKeyboardButton>>();
-            var backButton = new List<MessageKeyboardButton>();
+            var keyboardButtons = new List<MessageKeyboardButton>();
 
             var parametersPrev = new List<PayloadParam>();
             parametersPrev.Add(new PayloadParam()
@@ -79,7 +79,7 @@ namespace VkBot.Core.Commands
                 Value = (pageNumber + 1).ToString(),
             });
 
-            backButton.Add(new MessageKeyboardButton() 
+            keyboardButtons.Add(new MessageKeyboardButton() 
             {
                 Action = new MessageKeyboardButtonAction()
                 {
@@ -93,7 +93,7 @@ namespace VkBot.Core.Commands
                 },
                 Color = KeyboardButtonColor.Default
             });
-            backButton.Add(new MessageKeyboardButton()
+            keyboardButtons.Add(new MessageKeyboardButton()
             {
                 Action = new MessageKeyboardButtonAction()
                 {
@@ -108,7 +108,6 @@ namespace VkBot.Core.Commands
                 Color = KeyboardButtonColor.Default
             });
 
-            keyboardButtons.Add(backButton);
             return keyboardButtons;
         }
 
@@ -121,7 +120,7 @@ namespace VkBot.Core.Commands
             {
                 buttonsCounter++;
                 page.Add(item);
-                if (buttonsCounter >= 10)
+                if (buttonsCounter >= 5)
                 {
                     buttonsCounter = 0;
                     pages.Add(page);
