@@ -38,7 +38,7 @@ namespace VkBot.Core.Commands
                 int.TryParse(payload?.Params?.FirstOrDefault()?.Value?.ToString() ?? "", out var pageNumber);
 
                 response.ResponseText += 
-                    $"\n Страница: {pageNumber} из {pages.Count}," +
+                    $"\n Страница: {pageNumber + 1} из {pages.Count}," +
                     $"\n Кол-во записей всего: {historyList.Count()}";
 
                 foreach (var msg in pages[pageNumber])
