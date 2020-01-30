@@ -37,11 +37,6 @@ namespace VkBot.Core.Commands
                 var payload = Deserialize(request.Payload);
                 int.TryParse(payload?.Params?.FirstOrDefault()?.Value?.ToString() ?? "", out var pageNumber);
 
-                if (pageNumber != 0)
-                {
-                    pageNumber--;
-                }
-
                 response.ResponseText += 
                     $"\n Страница: {pageNumber} из {pages.Count}," +
                     $"\n Кол-во записей всего: {historyList.Count()}";
@@ -78,35 +73,40 @@ namespace VkBot.Core.Commands
                 ParamName = "Номер страницы",
                 Value = (pageNumber + 1).ToString(),
             });
-
-            keyboardButtons.Add(new MessageKeyboardButton() 
+            if (pageNumber > 0)
             {
-                Action = new MessageKeyboardButtonAction()
+                keyboardButtons.Add(new MessageKeyboardButton()
                 {
-                    Label = "Предыдущая страница",
-                    Type = KeyboardButtonActionType.Text,
-                    Payload = new Payload()
+                    Action = new MessageKeyboardButtonAction()
                     {
-                        Command = KeyWord,
-                        Params = parametersPrev,
-                    }.Serialize(),
-                },
-                Color = KeyboardButtonColor.Default
-            });
-            keyboardButtons.Add(new MessageKeyboardButton()
+                        Label = "Предыдущая страница",
+                        Type = KeyboardButtonActionType.Text,
+                        Payload = new Payload()
+                        {
+                            Command = KeyWord,
+                            Params = parametersPrev,
+                        }.Serialize(),
+                    },
+                    Color = KeyboardButtonColor.Default
+                });
+            }
+            if (pageNumber < pagesCount)
             {
-                Action = new MessageKeyboardButtonAction()
+                keyboardButtons.Add(new MessageKeyboardButton()
                 {
-                    Label = "Следующая страница",
-                    Type = KeyboardButtonActionType.Text,
-                    Payload = new Payload()
+                    Action = new MessageKeyboardButtonAction()
                     {
-                        Command = KeyWord,
-                        Params = parametersNext,
-                    }.Serialize(),
-                },
-                Color = KeyboardButtonColor.Default
-            });
+                        Label = "Следующая страница",
+                        Type = KeyboardButtonActionType.Text,
+                        Payload = new Payload()
+                        {
+                            Command = KeyWord,
+                            Params = parametersNext,
+                        }.Serialize(),
+                    },
+                    Color = KeyboardButtonColor.Default
+                });
+            }
 
             return keyboardButtons;
         }
