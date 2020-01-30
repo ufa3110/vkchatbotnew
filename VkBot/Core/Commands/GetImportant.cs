@@ -38,7 +38,7 @@ namespace VkBot.Core.Commands
                 int.TryParse(payload?.Params?.FirstOrDefault()?.ToString() ?? "", out var pageNumber);
 
                 pageNumber = (pageNumber == 0) ? 1 : pageNumber;
-
+                response.ResponseText += $"\n кол-во страниц: {pages.Count}, \n pageNumber: {pageNumber} ";
                 foreach (var msg in pages[pageNumber - 1])
                 {
                     if (msg != null)
@@ -56,7 +56,6 @@ namespace VkBot.Core.Commands
         private List<List<DB.Messages>> GetMessagePages(List<DB.Messages> historyList)
         {
             var pages = new List<List<DB.Messages>>();
-            var pageNumber = 0;
             var buttonsCounter = 0;
             var page = new List<DB.Messages>();
             foreach(var item in historyList)
