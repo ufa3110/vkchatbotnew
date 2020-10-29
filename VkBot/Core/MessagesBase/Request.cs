@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VkBot.Core.MessagesBase;
 using VkNet.Abstractions;
 using VkNet.Model;
 
@@ -10,17 +11,8 @@ namespace VkBot.Core.Messages
     /// <summary>
     /// Запрос на выполнение команды
     /// </summary>
-    public class Request : ICommandMessage
+    public class Request : CommandMessageBase
     {
-        /// <summary>
-        /// Версия - меняется руками, для отслеживания применения изменений
-        /// </summary>
-        public Int32 Version { get; set; }
-
-        /// <summary>
-        /// Id сообщения, используется для трассировки обработки сообщения
-        /// </summary>
-        public Guid MessageId { get; set; }
 
         /// <summary>
         /// Имя пользователя который послал запрос
