@@ -44,7 +44,7 @@ namespace VkBot.Core.Structures
                 var payload = (Payload)JsonConvert.DeserializeObject(SerializedJSONString, typeof(Payload));
                 return payload;
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }
