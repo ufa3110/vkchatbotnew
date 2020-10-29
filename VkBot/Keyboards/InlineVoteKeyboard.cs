@@ -11,27 +11,9 @@ namespace VkBot.Keyboards
     {
         public MessageKeyboard GetInlineVoteKeyboard()
         {
-            var keyboardButtons = new List<List<MessageKeyboardButton>>();
-            var buttons = new List<MessageKeyboardButton>();
-            buttons.Add(new MessageKeyboardButton()
-            {
-                Action = new MessageKeyboardButtonAction()
-                {
-                    Label = "Важно",
-                    Type = KeyboardButtonActionType.Text,
-                },
-                Color = KeyboardButtonColor.Positive
-            });
-            buttons.Add(new MessageKeyboardButton()
-            {
-                Action = new MessageKeyboardButtonAction()
-                {
-                    Label = "Не очень",
-                    Type = KeyboardButtonActionType.Text,
-                },
-                Color = KeyboardButtonColor.Negative
-            });
-            keyboardButtons.Add(buttons);
+            var keyboardButtons = new KeyboardButtonsFull();
+            
+            keyboardButtons.Add(GetInlineVoteKeyboardButtons());
 
             return new MessageKeyboard()
             {
@@ -40,6 +22,46 @@ namespace VkBot.Keyboards
             };
 
         }
+
+        private List<MessageKeyboardButton> GetInlineVoteKeyboardButtons()
+        {
+            var buttons = new List<MessageKeyboardButton>();
+
+            buttons.Add(GetImportantButton());
+            buttons.Add(GetNotImportantButton());
+
+            return buttons;
+
+        }
+
+
+
+        private MessageKeyboardButton GetImportantButton()
+        {
+            return new MessageKeyboardButton()
+            {
+                Action = new MessageKeyboardButtonAction()
+                {
+                    Label = "Важно",
+                    Type = KeyboardButtonActionType.Text,
+                },
+                Color = KeyboardButtonColor.Positive
+            };
+        }
+
+        private MessageKeyboardButton GetNotImportantButton()
+        {
+            return new MessageKeyboardButton()
+            {
+                Action = new MessageKeyboardButtonAction()
+                {
+                    Label = "Не очень",
+                    Type = KeyboardButtonActionType.Text,
+                },
+                Color = KeyboardButtonColor.Negative
+            };
+        }
+
 
     }
 }
