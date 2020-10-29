@@ -29,7 +29,7 @@ namespace VkBot.Core.Commands
                 {
                     try
                     {
-                        var newMessage = new DB.Messages()
+                        var newMessage = new DB.Entity.Messages()
                         {
                             Id = (int)request.ReplyMessage,
                             Comment = request.MessageText.Replace(KeyWord,""),

@@ -1,11 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VkBot.Core.Structures
 {
@@ -37,11 +32,11 @@ namespace VkBot.Core.Structures
             public string Value { get; set; }
         }
 
-
         public string Serialize()
         {
             return JsonConvert.SerializeObject(this);
         }
+
         public static Payload Deserialize(string SerializedJSONString)
         {
             try

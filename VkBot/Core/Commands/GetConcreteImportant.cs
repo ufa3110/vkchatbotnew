@@ -39,7 +39,7 @@ namespace VkBot.Core.Commands
                     replyMessage.Add(message.Id);
                     response.ForwardedMessages = replyMessage;
                     
-                    response.ResponseText = $"Cообщение(id = {message.Id}, комментарий [{message.Comment}])";
+                    response.ResponseText = $"Cообщение(id = {message.Id}, комментарий \"{message.Comment}\")";
                     
                 }
                 catch (Exception ex)

@@ -6,6 +6,8 @@ using VkBot.DB;
 using VkBot.Keyboards;
 using VkNet.Enums.SafetyEnums;
 using VkNet.Model.Keyboard;
+using VkBot.DB.Entity;
+
 using static VkBot.Core.Structures.Payload;
 
 namespace VkBot.Core.Commands
@@ -111,11 +113,11 @@ namespace VkBot.Core.Commands
             return keyboardButtons;
         }
 
-        private List<List<DB.Messages>> GetMessagePages(List<DB.Messages> historyList)
+        private List<List<DB.Entity.Messages>> GetMessagePages(List<DB.Entity.Messages> historyList)
         {
-            var pages = new List<List<DB.Messages>>();
+            var pages = new List<List<DB.Entity.Messages>>();
             var buttonsCounter = 0;
-            var page = new List<DB.Messages>();
+            var page = new List<DB.Entity.Messages>();
             foreach(var item in historyList)
             {
                 buttonsCounter++;
@@ -124,19 +126,19 @@ namespace VkBot.Core.Commands
                 {
                     buttonsCounter = 0;
                     pages.Add(page);
-                    page = new List<DB.Messages>();
+                    page = new List<DB.Entity.Messages>();
                 }
             }
             if (buttonsCounter != 0)
             {
                 pages.Add(page);
-                page = new List<DB.Messages>();
+                page = new List<DB.Entity.Messages>();
             }
 
             return pages;
         }
 
-        private List<MessageKeyboardButton> GetMessageButton(DB.Messages msg)
+        private List<MessageKeyboardButton> GetMessageButton(DB.Entity.Messages msg)
         {
             var parameters = new List<PayloadParam>();
             parameters.Add(new PayloadParam()
