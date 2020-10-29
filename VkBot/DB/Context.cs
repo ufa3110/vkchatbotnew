@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using VkBot.DB.Entity;
 
 namespace VkBot.DB
 {
@@ -26,16 +27,5 @@ namespace VkBot.DB
                 );
         }
     }
-    public class Messages
-    {
-        public int Id { get; set; }
-        public string Comment { get; set; }
-    }
-
-    public class Log
-    {
-        public int Id { get; set; }
-        public DateTimeOffset dateTime { get; set; }
-        public string log { get; set; }
-    }
+    
 }
