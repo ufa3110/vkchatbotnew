@@ -52,13 +52,11 @@ namespace VkBot.Controllers {
                 // Новое сообщение
                 case "message_new":
                     {
-                        JsonSerializer serializer = new JsonSerializer();
                         // Десериализация
                         var msg = Message.FromJson(new VkResponse(updates.Object.Message));
                         try
                         {
-                            var parser = new NewMessageParser(msg, _vkApi);
-                            parser.Parse();
+                            NewMessageParser.Parse(msg, _vkApi);
                         }
                         catch (Exception ex)
                         {

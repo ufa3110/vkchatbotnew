@@ -12,37 +12,34 @@ using VkNet.Model.RequestParams;
 
 namespace VkBot.Controllers.Messages
 {
-    public class NewMessageParser
+    public static class NewMessageParser
     {
-        public NewMessageParser(Message msg, IVkApi vkApi)
+        public static void Parse(Message msg, IVkApi vkApi)
         {
-            _msg = msg;
+            var manager = new CommandsManager();
+
             manager.Init();
-            _vkApi = vkApi;
-        }
 
-        public void Parse()
-        {
-            var payload = Payload.Deserialize(_msg.Payload ?? "");
+            var payload = Payload.Deserialize(msg.Payload ?? "");
 
-            var receivedCommand = manager.CommandsList.FirstOrDefault(_ => _msg.Text.Contains(_.KeyWord))
+            var receivedCommand = manager.CommandsList.FirstOrDefault(_ => msg.Text.Contains(_.KeyWord))
                 ?? manager.CommandsList.FirstOrDefault(_ => payload?.Command.Contains(_.KeyWord) ?? false);
 
             var response = new Response();
-            var request = new Request(_msg, _vkApi);
+            var request = new Request(msg, vkApi);
 
             if (receivedCommand != null)
             {
                 if (receivedCommand.AdminCommand)
                 {
-                    if (Admins.AdminsList.Contains(_msg.FromId.ToString()))
+                    if (Admins.AdminsList.Contains(msg.FromId.ToString()))
                     {
                         response = receivedCommand.Execute(request);
                     }
                     else
                     {
                         response.ResponseText = "Недостаточно прав для выполнения данной команды";
-                        response.UserId = _msg.FromId;
+                        response.UserId = msg.FromId;
                         response.ForwardedMessages = request.ForwardedMessages;
                     }
                 }
@@ -53,10 +50,10 @@ namespace VkBot.Controllers.Messages
 
                 if (response.ResponseText != null && response.ResponseText != "")
                 {
-                    _vkApi.Messages.Send(new MessagesSendParams
+                    vkApi.Messages.Send(new MessagesSendParams
                     {
                         RandomId = new DateTime().Millisecond,
-                        PeerId = _msg.PeerId.Value,
+                        PeerId = msg.PeerId.Value,
                         Message = response.ResponseText,
                         ForwardMessages = response?.ForwardedMessages,
                         UserId = response?.UserId ?? 0,
@@ -66,9 +63,5 @@ namespace VkBot.Controllers.Messages
             }
         }
 
-
-        private Message _msg;
-        private readonly CommandsManager manager = new CommandsManager();
-        private readonly IVkApi _vkApi;
     }
 }
